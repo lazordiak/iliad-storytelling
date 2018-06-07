@@ -1,20 +1,20 @@
 var urldata;
 
 function preload() {
-  var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=30c136eed7bb433ea12dbdbf188246c5&q=dead%20war&begin_date=20180606&fl=headline";
+  var url = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=30c136eed7bb433ea12dbdbf188246c5&q=dead%20war&begin_date=20180606&fl=headline';
   urldata = loadJSON(url);
 }
 
 function setup() {
-  var cnv = createCanvas(windowWidth, windowHeight);
-  cnv.style('display', 'block');
+  /*var cnv = */createCanvas(windowWidth, windowHeight);
+  //cnv.style('display', 'block');
   angleMode(DEGREES);
   noLoop();
 }
 
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
-}
+//function windowResized() {
+//  resizeCanvas(windowWidth, windowHeight);
+//}
 
 /*
 CHARACTERS:
@@ -55,16 +55,14 @@ function draw() {
 
   background(200);
 
-  var headlines = urldata.response.docs;
+  var headline = urldata.response.docs[0].headline.main;
 
-  var firstHeadline = headlines[0].main;
+  createP(headline);
 
-  createP(firstHeadline);
-
-  console.log(firstHeadline);
+  console.log(headline);
 
   textAlign(CENTER);
-  text(firstHeadline, 0, height - 30, width, 30);
+  text(headline, 0, height - 30, width, 30);
 
 /*
 DEPRECATED BUT HERE SO I DONT FORGET IT
