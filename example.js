@@ -1,24 +1,34 @@
-// Examples use USGS Earthquake API:
-//   https://earthquake.usgs.gov/fdsnws/event/1/#methods
-var earthquakes;
+// Variable to store json data
+var theData;
+
+//loads before the rest, ofc
 function preload() {
-  // Get the most recent earthquake in the database
-  var url =
-   'https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=30c136eed7bb433ea12dbdbf188246c5&q=dead%20war&begin_date=20180606&fl=headline'
-  earthquakes = loadJSON(url);
+  // Get the data from IlliadWords and preload so its available
+  var url = "IlliadWords.json";
+  theData = loadJSON(url,"json");
 }
 
+// Initialize Processing sketch
 function setup() {
-  noLoop();
+  createCanvas(windowWidth, windowHeight);
+  //i want it painted BLACK
+  background(0);
+  //print out the info in the json
+  console.log(theData);
+  dataArray = (Object.keys(theData));
+  randomKey = dataArray[Math.floor(Math.random()*dataArray.length)];
+  console.log(randomKey);
+  console.log(theData[randomKey])
+
+/*
+  for (var book in theData) {
+    console.log(book);
+  }
+  */
+
 }
 
 function draw() {
-  background(200);
-  // Get the magnitude and name of the earthquake out of the loaded JSON
-  //var earthquakeMag = earthquakes.features[0].properties.mag;
-  var earthquakeName = earthquakes.response.docs[0].headline.main;
-  //ellipse(width / 2, height / 2, earthquakeMag * 10, earthquakeMag * 10);
-  textAlign(CENTER);
-  text(earthquakeName, 0, height - 30, width, 30);
-  createP(earthquakeName)
+
+
 }
