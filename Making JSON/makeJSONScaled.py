@@ -1,6 +1,7 @@
 import json
 from collections import Counter
 from os import listdir, remove
+import numpy as np
 
 
 #Set the name of the folder the text files are in
@@ -12,7 +13,7 @@ wordSearch = ["fight","honor","dead","pride","greed","lead","friend","love","jus
 			  "beauty","wife","white"]
 
 #Name of the database
-jsonName = "IlliadWords.json"
+jsonName = "ScaledIlliadWords.json"
 
 #If a database already exists....
 if jsonName in listdir():
@@ -22,9 +23,12 @@ if jsonName in listdir():
 jsonDict = dict()
 
 #Creates CSV to analyze word frequency
-rFile = open("wordCounts.csv", "w")
+rFile = open("scaledWordCounts.csv", "w")
 
 rFile.write(", ".join(map(str, ["bookName"]+wordSearch))+"\n")
+
+npWords = []
+nameArray = []
 
 #For each file in the directory....
 for fileName in listdir(directory):
@@ -48,21 +52,45 @@ for fileName in listdir(directory):
 			#Append the count of that word from the wordcount dictionary
 			wordArray.append((wordcount[word])/numWords)
 
-		#Writes to the csv
-		rFile.write(", ".join(map(str, [fileName]+wordArray))+"\n")
+		if len(npWords) == 0:
+			npWords = np.array([wordArray])
+		else:
+			npWords = np.concatenate((npWords,np.array([wordArray])))
 
-		#Matches the words with the percentages with zip
-		#makes that into a dictionary
-		#Sets that as the value where the key is the book title
-		#Adds that to the jsonDict
-		jsonDict.update({fileName:dict(zip(wordSearch,wordArray))})
-		#Close the file
+		nameArray.append(fileName)
+
+		# #Writes to the csv
+		# rFile.write(", ".join(map(str, [fileName]+wordArray))+"\n")
+
+		# #Matches the words with the percentages with zip
+		# #makes that into a dictionary
+		# #Sets that as the value where the key is the book title
+		# #Adds that to the jsonDict
+		# jsonDict.update({fileName:dict(zip(wordSearch,wordArray))})
+		# #Close the file
 		bookFile.close()
+
+# #Creates the json file
+# with open(jsonName,'w') as outfile:
+# 	json.dump(jsonDict, outfile, indent = 4)
+
+multipArray = np.amax(npWords)/np.amax(npWords, axis = 0)
+
+scaledWords = npWords*multipArray
+
+scaledWordList = np.ndarray.tolist(scaledWords)
+
+for i in range(len(nameArray)):
+	fileName = nameArray[i]
+
+	rFile.write(", ".join(map(str, [fileName]+scaledWordList[i]))+"\n")
+
+	jsonDict.update({fileName:dict(zip(wordSearch,scaledWordList[i]))})
+
 
 #Creates the json file
 with open(jsonName,'w') as outfile:
 	json.dump(jsonDict, outfile, indent = 4)
-
 
 rFile.close()
 
