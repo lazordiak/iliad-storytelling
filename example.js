@@ -18,7 +18,7 @@ function setup() {
   dataArray = (Object.keys(theData));
   randomKey = dataArray[Math.floor(Math.random()*dataArray.length)];
   console.log(randomKey);
-  console.log(theData[randomKey])
+  console.log(theData[randomKey]);
 
 /*
   for (var book in theData) {
