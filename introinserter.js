@@ -58,10 +58,5 @@ for (var i = 0; i < allpos.length; i++) {
 /*
 to do:
 
-maybe for i in 1 to whatever:
-no, i could put all these objects into an array
-and then for i in array length
-get element by id thats 'pos'+i
-and then "document.getElementById("myspan").textContent="newtext";"
-ofc it has to select the right one so thats ok like thats fine and doable
+inject from the word things, like the json, instead of by hand
 */
