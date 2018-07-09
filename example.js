@@ -1,10 +1,11 @@
 // Variable to store json data
 var theData;
 
+
 //loads before the rest, ofc
 function preload() {
   // Get the data from IlliadWords and preload so its available
-  var url = "IlliadWords.json";
+  var url = "JSON/ScaledIlliadWords.json";
   theData = loadJSON(url,"json");
 }
 
