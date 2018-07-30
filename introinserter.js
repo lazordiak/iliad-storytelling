@@ -13,7 +13,7 @@ var hector = ['courage','skill','dedication'];
 var paris = ['grace','charm','coward'];
 var polydamas = ['devoted','fate','future'];
 var priam = ['tired','old','king'];
-var helen = ['beauty','white','white'];
+var helen = ['beauty','wife','white'];
 
 characterList = [achilles,agamemnon,nestor,odysseus,diomedes,
     hector,paris,polydamas,priam,helen]
@@ -21,16 +21,16 @@ characterList = [achilles,agamemnon,nestor,odysseus,diomedes,
 //dict associating character names w/scores
 
 characterScores = {
-  "achilles" : 0,
-  "agamemnon" : 0,
-  "nestor" : 0,
-  "odysseus" : 0,
-  "diomedes" : 0,
-  "hector" : 0,
-  "paris" : 0,
-  "polydamas" : 0,
-  "priam" : 0,
-  "helen" : 0
+  achilles : 0,
+  agamemnon : 0,
+  nestor : 0,
+  odysseus : 0,
+  diomedes : 0,
+  hector : 0,
+  paris : 0,
+  polydamas : 0,
+  priam : 0,
+  helen : 0
 }
 
 //***************************STORY POSSIBILITIES********************************
@@ -100,44 +100,55 @@ function preload() {
 }
 
 // Initialize Processing sketch
+//IT ALL NEEDS TO GO IN SETUP
+//DAILY REMINDER THAT YOU'VE COMMITTED TO USING THIS FRAMEWORK FOR NO REASON
+//AND NOW YOU MUST ABIDE BY ITS ARCANE RULES
 function setup() {
   //its processing... without using processing!! NOBODY'S EVER DONE THIS BEFORE--
   noCanvas();
-  //check to see if our html injector is still functioning
-  var allpos = pos0.concat(pos1,pos2);
 
+  //put it in array form for... uh... e-ease of access
+  dataArray = (Object.keys(theData));
+
+  //check to see if our html injector is still functioning
+  allpos = pos0.concat(pos1,pos2);
   for (var i = 0; i < allpos.length; i++) {
-    var character = allpos[i]["Greeks"]["Odysseus"]
+    character = allpos[i]["Greeks"]["Odysseus"]
     document.getElementById("pos"+i.toString()).textContent="HAHA THE ILIAD";
   }
 
 //************the good shit: calculating character power scores****************
 
-  dataArray = (Object.keys(theData));
-
 //first assign every character a book -- for each character in the list
   for (var i=0; i<characterList.length; i++) {
-    console.log(characterList[i]);
     //get a random book title
-    randomKey = dataArray[Math.floor(Math.random()*dataArray.length)];
-    randomBookWords = theData[randomKey];
+    randomBook = dataArray[Math.floor(Math.random()*dataArray.length)];
+    //and all the words included in said key (of course they're all the same
+    //for each book title)
+    randomBookWords = theData[randomBook];
     //delete it from the array of titles so everyone gets a unique book
-    dataArray.splice(randomKey,1);
-    //console.log(dataArray);
-    //console.log(randomBookWords);
-    //arrays are easier to work with
-    inArrayForm = Object.keys(randomBookWords);
-    console.log(inArrayForm);
+    //this is so that after a character is assigned a book...
+    //that book is deleted from the list of possible books for the next character
+    //i knew i was a genius
+    dataArray.splice(randomBook,1);
+    //arrays are easier to work with so this puts all the character keywords in
+    //array form (greed/pride/etc)
+    bookWordsInArray = Object.keys(randomBookWords);
+    console.log(bookWordsInArray);
     //now here's the kicker -- for every word in our random book dataset
-    for (var j=0; i<inArrayForm.length; j++) {
+    for (var j=0; j<bookWordsInArray.length; j++) {
       //if the current character's array includes the key we're looping through
-      if (characterList[i].includes(inArrayForm[j])) {
-        console.log(characterList[i]);
+      if (characterList[i].includes(bookWordsInArray[j])) {
+        //then we want to add the score associated with that key to the
+        //character's power score
+        console.log(theData[randomBook][bookWordsInArray[j]]);
+        characterScores
+        //CURRENT STATUS: SUBOPTIMAL BECAUSE I HAVE NO WAY TO ASSOCIATE THE
+        //ARRAYS TO THE PROPER CHARACTER IN THE CHARACTER SCORE DICT ABOVE
+        //I WILL FIX THIS WHEN IM LESS TIRED
       }
-    }
 
-    //what if we made a dictionary immediately since we can get the word count
-    //immediately
+    }
 
   }
 
