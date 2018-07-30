@@ -1,7 +1,7 @@
 //***************************CHARACTERS W/THEIR WORDS***************************
+//arrays of the characters with the words which are relevant to them
 
 //Argives:
-
 var achilles = ['fight','honor','dead'];
 var agamemnon = ['pride','greed','lead'];
 var nestor = ['friend','love','justice'];
@@ -15,12 +15,12 @@ var polydamas = ['devoted','fate','future'];
 var priam = ['tired','old','king'];
 var helen = ['beauty','white','white'];
 
-characterList = [achilles,agamemnon,nestor,odysseus,diomedes,
-    hector,paris,polydamas,priam,helen]
+var characterList = [achilles,agamemnon,nestor,odysseus,diomedes,
+    hector,paris,polydamas,priam,helen];
 
 //dict associating character names w/scores
 
-characterScores = {
+var characterScores = {
   "achilles" : 0,
   "agamemnon" : 0,
   "nestor" : 0,
@@ -31,7 +31,7 @@ characterScores = {
   "polydamas" : 0,
   "priam" : 0,
   "helen" : 0
-}
+};
 
 //***************************STORY POSSIBILITIES********************************
 //THESE ARE THE POSSIBLE FILL-INS TO ALL THE BLANKS IN THE STORY - INTRODUCTION
@@ -85,12 +85,11 @@ var pos2 = [{
     'Diomedes': "Sing to me",
     'Nestor': "Let us recall, at length"
   }
-}]
+}];
 
 //************************SEEING HOW THIS WORKS WITH PROCESSING****************
 // Variable to store json data
 var theData;
-
 
 //loads before the rest, ofc
 function preload() {
@@ -101,32 +100,33 @@ function preload() {
 
 // Initialize Processing sketch
 function setup() {
+  console.log(theData);
   //its processing... without using processing!! NOBODY'S EVER DONE THIS BEFORE--
   noCanvas();
   //check to see if our html injector is still functioning
   var allpos = pos0.concat(pos1,pos2);
 
-  for (var i = 0; i < allpos.length; i++) {
-    var character = allpos[i]["Greeks"]["Odysseus"]
-    document.getElementById("pos"+i.toString()).textContent="HAHA THE ILIAD";
+  for (var h = 0; h < allpos.length; h++) {
+    var character = allpos[h]["Greeks"]["Odysseus"];
+    document.getElementById("pos"+h.toString()).textContent="HAHA THE ILIAD";
   }
 
 //************the good shit: calculating character power scores****************
 
-  dataArray = (Object.keys(theData));
+  var dataArray = (Object.keys(theData));
 
 //first assign every character a book -- for each character in the list
   for (var i=0; i<characterList.length; i++) {
     console.log(characterList[i]);
     //get a random book title
-    randomKey = dataArray[Math.floor(Math.random()*dataArray.length)];
-    randomBookWords = theData[randomKey];
+    var randomKey = dataArray[Math.floor(Math.random()*dataArray.length)];
+    var randomBookWords = theData[randomKey];
     //delete it from the array of titles so everyone gets a unique book
     dataArray.splice(randomKey,1);
     //console.log(dataArray);
     //console.log(randomBookWords);
     //arrays are easier to work with
-    inArrayForm = Object.keys(randomBookWords);
+    var inArrayForm = Object.keys(randomBookWords);
     console.log(inArrayForm);
     //now here's the kicker -- for every word in our random book dataset
     for (var j=0; i<inArrayForm.length; j++) {
