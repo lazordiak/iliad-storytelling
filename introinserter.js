@@ -1,40 +1,72 @@
 //***************************CHARACTERS W/THEIR WORDS***************************
+// each character is an object with a list of their words and a power score
+// (initialized at zero)
+
+//if i ever decide i want to be a real og mlg player here i can come back
+//and just define one class template instead of making 20 billion object literals
+//for anyone reading this -- yes, i know how to construct objects in different
+//ways in js, this was just easy!!
+//best practices is my middle name but my first name is schuyler
 
 //Argives:
+var achilles = {
+  words : ['fight','honor','dead'],
+  score : 0
+};
 
-var achilles = ['fight','honor','dead'];
-var agamemnon = ['pride','greed','lead'];
-var nestor = ['friend','love','justice'];
-var odysseus = ['trick','smart','plot'];
-var diomedes = ['sad','husband','steady'];
+var agamemnon = {
+  words : ['pride','greed','lead'],
+  score : 0
+};
+
+var nestor = {
+  words : ['friend','love','justice'],
+  score : 0
+};
+
+var odysseus = {
+  words : ['trick','smart','plot'],
+  score : 0
+};
+
+var diomedes = {
+  words : ['sad','husband','steady'],
+  score : 0
+};
 
 //Trojans
-var hector = ['courage','skill','dedication'];
-var paris = ['grace','charm','coward'];
-var polydamas = ['devoted','fate','future'];
-var priam = ['tired','old','king'];
-var helen = ['beauty','wife','white'];
+var hector = {
+  words : ['courage','skill','dedication'],
+  score : 0
+};
 
+var paris = {
+  words : ['grace','charm','coward'],
+  score : 0
+};
+
+var polydamas = {
+  words : ['devoted','fate','future'],
+  score : 0
+};
+
+var priam = {
+  words : ['tired','old','king'],
+  score : 0
+};
+
+var helen = {
+  words : ['beauty','wife','white'],
+  score : 0
+};
+
+//list of all the character-objects to iterate through
 characterList = [achilles,agamemnon,nestor,odysseus,diomedes,
     hector,paris,polydamas,priam,helen]
 
-//dict associating character names w/scores
-
-characterScores = {
-  achilles : 0,
-  agamemnon : 0,
-  nestor : 0,
-  odysseus : 0,
-  diomedes : 0,
-  hector : 0,
-  paris : 0,
-  polydamas : 0,
-  priam : 0,
-  helen : 0
-}
-
 //***************************STORY POSSIBILITIES********************************
-//THESE ARE THE POSSIBLE FILL-INS TO ALL THE BLANKS IN THE STORY - INTRODUCTION
+//THESE ARE THE POSSIBLE FILL-INS TO ALL THE BLANKS IN THE STORY
+//pos[x] refers to the empty spaces in the html template
 
 var pos0 = [{
   'Trojans': {
@@ -87,7 +119,7 @@ var pos2 = [{
   }
 }]
 
-//************************SEEING HOW THIS WORKS WITH PROCESSING****************
+//************************INITIALIZING W/PROCESSING****************************
 // Variable to store json data
 var theData;
 
@@ -108,9 +140,11 @@ function setup() {
   noCanvas();
 
   //put it in array form for... uh... e-ease of access
+  //since we'll be needing the index later
   dataArray = (Object.keys(theData));
 
-  //check to see if our html injector is still functioning
+  //check to see if our html injector is still functioning, this is the code
+  //we use to throw our text into the html template
   allpos = pos0.concat(pos1,pos2);
   for (var i = 0; i < allpos.length; i++) {
     character = allpos[i]["Greeks"]["Odysseus"]
@@ -119,12 +153,13 @@ function setup() {
 
 //************the good shit: calculating character power scores****************
 
-//first assign every character a book -- for each character in the list
+//first assign every character a book --
+//BEGIN: for each character in the list
   for (var i=0; i<characterList.length; i++) {
     //get a random book title
     randomBook = dataArray[Math.floor(Math.random()*dataArray.length)];
-    //and all the words included in said key (of course they're all the same
-    //for each book title)
+    //and all the words included in said book title/object key (of course
+    //they're all the same for each book title)
     randomBookWords = theData[randomBook];
     //delete it from the array of titles so everyone gets a unique book
     //this is so that after a character is assigned a book...
@@ -137,15 +172,12 @@ function setup() {
     console.log(bookWordsInArray);
     //now here's the kicker -- for every word in our random book dataset
     for (var j=0; j<bookWordsInArray.length; j++) {
-      //if the current character's array includes the key we're looping through
-      if (characterList[i].includes(bookWordsInArray[j])) {
+      //if the current character's word array property inside the character
+      //object includes the words we're looping through
+      if (characterList[i]['words'].includes(bookWordsInArray[j])) {
         //then we want to add the score associated with that key to the
         //character's power score
         console.log(theData[randomBook][bookWordsInArray[j]]);
-        characterScores
-        //CURRENT STATUS: SUBOPTIMAL BECAUSE I HAVE NO WAY TO ASSOCIATE THE
-        //ARRAYS TO THE PROPER CHARACTER IN THE CHARACTER SCORE DICT ABOVE
-        //I WILL FIX THIS WHEN IM LESS TIRED
       }
 
     }
