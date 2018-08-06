@@ -10,52 +10,62 @@
 
 //Argives:
 var achilles = {
+  name : 'achilles',
   words : ['fight','honor','dead'],
   score : 0
 };
 
 var agamemnon = {
+  name: 'agamemnon',
   words : ['pride','greed','lead'],
   score : 0
 };
 
 var nestor = {
+  name : 'nestor',
   words : ['friend','love','justice'],
   score : 0
 };
 
 var odysseus = {
+  name : 'odysseus',
   words : ['trick','smart','plot'],
   score : 0
 };
 
 var diomedes = {
+  name : 'diomedes',
   words : ['sad','husband','steady'],
   score : 0
 };
 
 //Trojans
 var hector = {
+  name : 'hector',
   words : ['courage','skill','dedication'],
   score : 0
 };
 
 var paris = {
+  name : 'paris',
   words : ['grace','charm','coward'],
   score : 0
 };
 
 var polydamas = {
+  name : 'polydamas',
   words : ['devoted','fate','future'],
   score : 0
 };
 
 var priam = {
+  name : 'priam',
   words : ['tired','old','king'],
   score : 0
 };
 
 var helen = {
+  name : 'helen',
   words : ['beauty','wife','white'],
   score : 0
 };
@@ -77,42 +87,42 @@ weights = []
 //pos[x] refers to the empty spaces in the html template
 
 var pos0 = {
-    'Hector': "Sing to me, as you will",
-    'Priam': "Recall with sadness",
-    'Helen': "Let us ponder on",
-    'Paris': "We'll speak, reluctantly",
-    'Polydamas': "We will reflect on",
-    'Odysseus': "Explain to us",
-    'Achilles': "Let us remember the glory of",
-    'Agamemnon': "Recall the damned thing",
-    'Diomedes': "Sing to me",
-    'Nestor': "Let us recall, at length"
+    hector: "Sing to me, as you will",
+    priam: "Recall with sadness",
+    helen: "Let us ponder on",
+    paris: "We'll speak, reluctantly",
+    polydamas: "We will reflect on",
+    odysseus: "Explain to us",
+    achilles: "Let us remember the glory of",
+    agamemnon: "Recall the damned thing",
+    diomedes: "Sing to me",
+    nestor: "Let us recall, at length"
 };
 
 var pos1 = {
-    'Hector': "barbaric",
-    'Priam': "merciless",
-    'Helen': "impressive",
-    'Paris': "frightening",
-    'Polydamas': "dreadful",
-    'Odysseus': "illogical",
-    'Achilles': "glorious",
-    'Agamemnon': "vicious",
-    'Diomedes': "violent",
-    'Nestor': "tempestuous -- like a sea-storm, maybe, or else a typhoon making landfall --"
+    hector: "barbaric",
+    priam: "merciless",
+    helen: "impressive",
+    paris: "frightening",
+    polydamas: "dreadful",
+    odysseus: "illogical",
+    achilles: "glorious",
+    agamemnon: "vicious",
+    diomedes: "violent",
+    nestor: "tempestuous -- like a sea-storm, maybe, or else a typhoon making landfall --"
 };
 
 var pos2 = {
-    'Hector': "Sing to me, as you will",
-    'Priam': "Recall with sadness",
-    'Helen': "Let us ponder on",
-    'Paris': "We'll speak, reluctantly",
-    'Polydamas': "We will reflect on",
-    'Odysseus': "the boisterous",
-    'Achilles': "the hero",
-    'Agamemnon': "Recall the damned thing",
-    'Diomedes': "Sing to me",
-    'Nestor': "Let us recall, at length"
+    hector: "Sing to me, as you will",
+    priam: "Recall with sadness",
+    helen: "Let us ponder on",
+    paris: "We'll speak, reluctantly",
+    polydamas: "We will reflect on",
+    odysseus: "the boisterous",
+    achilles: "the hero",
+    agamemnon: "Recall the damned thing",
+    diomedes: "Sing to me",
+    nestor: "Let us recall, at length"
 };
 
 //************************INITIALIZING W/PROCESSING****************************
@@ -141,11 +151,15 @@ function setup() {
 
   //check to see if our html injector is still functioning, this is the code
   //we use to throw our text into the html template
+
+  var allpos = [pos0,pos1,pos2];
+/*
   allpos = [pos0,pos1,pos2];
   for (var i = 0; i < allpos.length; i++) {
     character = allpos[i]["Odysseus"]
     document.getElementById("pos"+i.toString()).textContent="HAHA THE ILIAD";
   }
+  */
 
 //************the good shit: calculating character power scores****************
 
@@ -194,15 +208,42 @@ ok
 */
 //turning raw score into percentage of total score and pushing it to
 //weights i.e. creating the probability distribution
+
+//what i can do is
 for (var i=0; i<characterList.length; i++) {
   characterList[i]['score'] = characterList[i]['score']/totalScore
   weights.push(characterList[i]['score']);
-  console.log(weights);
 };
 
-//for each position uses the probability to select a character
+//for each position that needs filling
 for (var i=0; i < allpos.length; i++) {
-  continue
+
+  //initialize the prbability variable
+  var prob = 0;
+
+  //we go through each of the characters and weights...
+  for (var j=0; j < characterList.length; j++) {
+
+    //get a random number between 0 and 1
+    var randomNumber = Math.random();
+    prob = prob + weights[j];
+
+    //if that number is less than or equal to the current probability
+    //we can grab the current index!
+    if (randomNumber <= prob) {
+
+      //the reason its not working rn is that we need to get the index here and
+      //use it in the for loop one level up at the position level
+
+      //maybe a 'continue' here -- gotta figure out the way to break the for loop
+      //if i were smart id just make a function here that returns the correct index
+
+      document.getElementById("pos"+i.toString()).textContent = allpos[i][characterList[j]['name']];
+      break;
+
+    }
+
+  }
 }
 
 }
