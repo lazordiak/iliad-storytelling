@@ -80,7 +80,7 @@ characterList = [hector,priam,helen,paris,polydamas,odysseus,achilles,agamemnon,
 totalScore = 0;
 
 //variable to store the probability distributions
-weights = []
+weights = [];
 
 //***************************STORY POSSIBILITIES********************************
 //THESE ARE THE POSSIBLE FILL-INS TO ALL THE BLANKS IN THE STORY
@@ -153,13 +153,6 @@ function setup() {
   //we use to throw our text into the html template
 
   var allpos = [pos0,pos1,pos2];
-/*
-  allpos = [pos0,pos1,pos2];
-  for (var i = 0; i < allpos.length; i++) {
-    character = allpos[i]["Odysseus"]
-    document.getElementById("pos"+i.toString()).textContent="HAHA THE ILIAD";
-  }
-  */
 
 //************the good shit: calculating character power scores****************
 
@@ -220,12 +213,14 @@ for (var i=0; i < allpos.length; i++) {
 
   //initialize the prbability variable
   var prob = 0;
+  //and pick a random number
+  var randomNumber = Math.random();
 
   //we go through each of the characters and weights...
   for (var j=0; j < characterList.length; j++) {
 
-    //get a random number between 0 and 1
-    var randomNumber = Math.random();
+    //the probability is equal to the probably so far plus
+    //the probability of the current character
     prob = prob + weights[j];
 
     //if that number is less than or equal to the current probability
