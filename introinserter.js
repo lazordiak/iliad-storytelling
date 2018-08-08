@@ -109,22 +109,99 @@ var pos1 = {
     achilles: "glorious",
     agamemnon: "vicious",
     diomedes: "violent",
-    nestor: "tempestuous -- like a sea-storm, maybe, or else a typhoon making landfall --"
+    nestor: "tempestuous -- like a sea-storm or a typhoon making landfall --"
 };
 
 var pos2 = {
-    hector: "Sing to me, as you will",
-    priam: "Recall with sadness",
-    helen: "Let us ponder on",
-    paris: "We'll speak, reluctantly",
+    hector: "the killer",
+    priam: "the son-killer",
+    helen: "doomed",
+    paris: "frightful",
     polydamas: "We will reflect on",
-    odysseus: "the boisterous",
-    achilles: "the hero",
-    agamemnon: "Recall the damned thing",
-    diomedes: "Sing to me",
-    nestor: "Let us recall, at length"
+    odysseus: "loud",
+    achilles: "unparalleled",
+    agamemnon: "hubristic",
+    diomedes: "excellent",
+    nestor: "many-gloried"
 };
 
+var pos3 = {
+  hector: "an awful",
+  priam: "an awful",
+  helen: "an awful",
+  paris: "an awful",
+  polydamas: "an awful",
+  odysseus: "an awful",
+  achilles: "a justified",
+  agamemnon: "an awful",
+  diomedes: "an awful",
+  nestor: "an awful"
+};
+
+var pos4 = {
+  hector: "great losses",
+  priam: "revenge",
+  helen: "misery",
+  paris: "tears and death",
+  polydamas: "loss and retreat",
+  odysseus: "weeks of death",
+  achilles: "well-deserved pain",
+  agamemnon: "plague and pain",
+  diomedes: "hardships",
+  nestor: "untold and untellable sufferings"
+};
+
+var pos5 = {
+  hector: "stout",
+  priam: "beloved",
+  helen: "brutish",
+  paris: "Greek",
+  polydamas: "noble",
+  odysseus: "poor",
+  achilles: "brave",
+  agamemnon: "allied",
+  diomedes: "Trojan",
+  nestor: "young"
+};
+
+var pos6 = {
+  hector: "men who deserved better",
+  priam: "whose families wept for their death",
+  helen: "and not old men, either",
+  paris: "the battlefield was horrifying to behold",
+  polydamas: "good and bad alike",
+  odysseus: "those who should have planned better",
+  achilles: "men who fell in glory",
+  agamemnon: "who gave their all for their leaders",
+  diomedes: "great men and great leaders of men",
+  nestor: "the listing of them all would take too long to tell"
+};
+
+var pos7 = {
+  hector: "the final arbiter",
+  priam: "the father of the gods",
+  helen: "almighty",
+  paris: "dreadful",
+  polydamas: "far-seeing",
+  odysseus: "the great tactician",
+  achilles: "just",
+  agamemnon: "the greatest leader",
+  diomedes: "powerful",
+  nestor: "the great judge"
+};
+
+var pos8 = {
+  hector: "full of hubris",
+  priam: "the father of the gods",
+  helen: "almighty",
+  paris: "dreadful",
+  polydamas: "far-seeing",
+  odysseus: "the great tactician",
+  achilles: "curse him",
+  agamemnon: "finest leader of the Greeks",
+  diomedes: "powerful",
+  nestor: "the great judge"
+};
 //************************INITIALIZING W/PROCESSING****************************
 // Variable to store json data
 var theData;
@@ -152,7 +229,7 @@ function setup() {
   //check to see if our html injector is still functioning, this is the code
   //we use to throw our text into the html template
 
-  var allpos = [pos0,pos1,pos2];
+  var allpos = [pos0,pos1,pos2,pos3,pos4,pos5,pos6,pos7,pos8];
 
 //************the good shit: calculating character power scores****************
 
