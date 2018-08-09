@@ -143,7 +143,7 @@ var pos4 = {
   priam: "revenge",
   helen: "misery",
   paris: "tears and death",
-  polydamas: "loss and retreat",
+  polydamas: "loss and ruin",
   odysseus: "weeks of death",
   achilles: "well-deserved pain",
   agamemnon: "plague and pain",
@@ -191,16 +191,42 @@ var pos7 = {
 };
 
 var pos8 = {
-  hector: "full of hubris",
-  priam: "the father of the gods",
-  helen: "almighty",
-  paris: "dreadful",
-  polydamas: "far-seeing",
-  odysseus: "the great tactician",
+  hector: "son of Atreus",
+  priam: "husband of Clytemnestra",
+  helen: "brother of Menelaos",
+  paris: "a skilled spearman",
+  polydamas: "the wide-ruler",
+  odysseus: "a blowhard",
   achilles: "curse him",
-  agamemnon: "finest leader of the Greeks",
-  diomedes: "powerful",
-  nestor: "the great judge"
+  agamemnon: "shepherd of the people",
+  diomedes: "the commander",
+  nestor: "the lord marshal"
+};
+
+var pos9 = {
+  hector: "crippling the Greek forces",
+  priam: "to the great joy of the Trojans",
+  helen: "and the war grew even fiercer",
+  paris: "and the Trojans gained their chance",
+  polydamas: "and the plans of the Achaeans were left in ruin",
+  odysseus: "each shouting too much, and too long",
+  achilles: "and Agamemnon doomed his people",
+  agamemnon: "and Achilles doomed his people",
+  diomedes: "and blood was in the water",
+  nestor: "each making great speeches and great claims"
+};
+
+var pos10 = {
+  hector: "crippling the Greek forces",
+  priam: "to the great joy of the Trojans",
+  helen: "and the war grew even fiercer",
+  paris: "and the Trojans gained their chance",
+  polydamas: "and the plans of the Achaeans were left in ruin",
+  odysseus: "each shouting too much, and too long",
+  achilles: "and Agamemnon doomed his people",
+  agamemnon: "and Achilles doomed his people",
+  diomedes: "and blood was in the water",
+  nestor: "each making great speeches and great claims"
 };
 //************************INITIALIZING W/PROCESSING****************************
 // Variable to store json data
@@ -229,7 +255,7 @@ function setup() {
   //check to see if our html injector is still functioning, this is the code
   //we use to throw our text into the html template
 
-  var allpos = [pos0,pos1,pos2,pos3,pos4,pos5,pos6,pos7,pos8];
+  var allpos = [pos0,pos1,pos2,pos3,pos4,pos5,pos6,pos7,pos8,pos9];
 
 //************the good shit: calculating character power scores****************
 
