@@ -90,7 +90,7 @@ var pos0 = {
     hector: "Sing to me, as you will",
     priam: "Recall with sadness",
     helen: "Let us ponder on",
-    paris: "We'll speak, reluctantly",
+    paris: "We'll sing, reluctantly",
     polydamas: "We will reflect on",
     odysseus: "Explain to us",
     achilles: "Let us remember the glory of",
@@ -217,16 +217,120 @@ var pos9 = {
 };
 
 var pos10 = {
-  hector: "crippling the Greek forces",
-  priam: "to the great joy of the Trojans",
-  helen: "and the war grew even fiercer",
-  paris: "and the Trojans gained their chance",
-  polydamas: "and the plans of the Achaeans were left in ruin",
-  odysseus: "each shouting too much, and too long",
-  achilles: "and Agamemnon doomed his people",
-  agamemnon: "and Achilles doomed his people",
-  diomedes: "and blood was in the water",
-  nestor: "each making great speeches and great claims"
+  hector: "pit them against each other",
+  priam: "caused this fight",
+  helen: "set them on to fight",
+  paris: "made them fight thus",
+  polydamas: "brought this about",
+  odysseus: "set them at each other's throats",
+  achilles: "spurred Agamenon to hubris",
+  agamemnon: "spurred Achilles to hubris",
+  diomedes: "caused this clash",
+  nestor: "spurred on this disagreement"
+};
+
+var pos11 = {
+  hector: "angry because of his transgressions",
+  priam: "on account of one of his many bad decisions",
+  helen: "for some offense he gave to the god",
+  paris: "and thereby sided with the Trojans",
+  polydamas: "because of one of Agamemnon's schemes",
+  odysseus: "which wasn't very surprising",
+  achilles: "and for good reason too",
+  agamemnon: "unfairly so, when you stop to consider it",
+  diomedes: "and got his revenge",
+  nestor: "this being its own tale"
+};
+
+var pos12 = {
+  hector: "his pestilent arrows",
+  priam: "swift retribution",
+  helen: "a great illness",
+  paris: "his arrows of plague",
+  polydamas: "a scourge",
+  odysseus: "a vicious disease",
+  achilles: "a black, rotten, inglorious death",
+  agamemnon: "a sickness",
+  diomedes: "vile death by plague",
+  nestor: "a pestilential plague"
+};
+
+var pos13 = {
+  hector: "black ships",
+  priam: "boats",
+  helen: "ships",
+  paris: "intimidating ships",
+  polydamas: "packed ships",
+  odysseus: "hollow ships",
+  achilles: "long ships",
+  agamemnon: "swift ships",
+  diomedes: "strong ships",
+  nestor: "ships -- a full list of which is forthcoming --"
+};
+
+var pos14 = {
+  hector: "sweet Chryseis who had been stolen away",
+  priam: "dear Chryseis, a perfect daughter",
+  helen: "Astynome was her name",
+  paris: "the lovely Chryseis",
+  polydamas: "the inimitable Chrseis",
+  odysseus: "Chryseis, a nice girl",
+  achilles: "some girl Agamemnon liked",
+  agamemnon: "Chryseis, finer than Clytemnestra",
+  diomedes: "beautiful Chryseis",
+  nestor: "Chryseis, her name was"
+};
+
+var pos15 = {
+  hector: "begged",
+  priam: "ransomed with",
+  helen: "supplicated",
+  paris: "pled, on his knees, with",
+  polydamas: "implored",
+  odysseus: "approached one by one",
+  achilles: "beseeched",
+  agamemnon: "was begging with",
+  diomedes: "showed the treasure to",
+  nestor: "pleaded in long speeches to"
+};
+
+var pos16 = {
+  hector: "their commanders",
+  priam: "not known for their kind treatment of children",
+  helen: "watching him with disdain",
+  paris: "acting haughty",
+  polydamas: "brothers",
+  odysseus: "talking loudly",
+  achilles: "the whole reason behind this war",
+  agamemnon: "their brave leaders",
+  diomedes: "not so receptive",
+  nestor: "milling around at the base camp"
+};
+
+var pos17 = {
+  hector: "gathered here from far-off lands",
+  priam: "gathered for siege and war",
+  helen: "gathered to win back Helen",
+  paris: "gathered to slaughter the Trojans",
+  polydamas: "gathered to mount a siege",
+  odysseus: "from Ithaca and elsewhere",
+  achilles: "from Skyros and elsewhere",
+  agamemnon: "from Mycenae and elsewhere",
+  diomedes: "from Argos and elsewhere",
+  nestor: "from Pylos and elsewhere"
+};
+
+var pos18 = {
+  hector: "And that was only the beginning.",
+  priam: "If only it were that simple.",
+  helen: "But, men are men.",
+  paris: "Then it got very frightening.",
+  polydamas: "... Things, however, did not turn well.",
+  odysseus: "As if it would be that easy.",
+  achilles: "It was the beginning of the end.",
+  agamemnon: "Well, it could have gone better.",
+  diomedes: "Sadly, it didn't end like that.",
+  nestor: "Now here's where things really get good."
 };
 //************************INITIALIZING W/PROCESSING****************************
 // Variable to store json data
@@ -255,7 +359,8 @@ function setup() {
   //check to see if our html injector is still functioning, this is the code
   //we use to throw our text into the html template
 
-  var allpos = [pos0,pos1,pos2,pos3,pos4,pos5,pos6,pos7,pos8,pos9];
+  var allpos = [pos0,pos1,pos2,pos3,pos4,pos5,pos6,pos7,pos8,pos9,pos10,pos11,
+  pos12,pos13,pos14,pos15,pos16,pos17,pos18];
 
 //************the good shit: calculating character power scores****************
 
