@@ -435,13 +435,9 @@ for (var i=0; i < allpos.length; i++) {
     //we can grab the current index!
     if (randomNumber <= prob) {
 
-      //the reason its not working rn is that we need to get the index here and
-      //use it in the for loop one level up at the position level
-
-      //maybe a 'continue' here -- gotta figure out the way to break the for loop
-      //if i were smart id just make a function here that returns the correct index
-
-      document.getElementById("pos"+i.toString()).textContent = allpos[i][characterList[j]['name']];
+      //insert the relevant snipper at the correct position and break the for loop
+      document.getElementById("pos"+i.toString()).textContent =
+        allpos[i][characterList[j]['name']];
       break;
 
     }
@@ -452,10 +448,7 @@ for (var i=0; i < allpos.length; i++) {
 }
 
 /*
-to do:
-
-implement method for selecting character
-finish all possible character implementations for all positions
-make it pretty
-make sure all these files work together
+to do
+lets see if we can get the text to typewriter in like i did for that rita thing
+its processing so it should still work?
 */
